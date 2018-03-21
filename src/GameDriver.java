@@ -10,7 +10,7 @@ public class GameDriver {
         this.map = new Map(width, height);
     }
 
-    private ArrayList<Point> getTreesToPlant() {
+    public ArrayList<Point> getTreesToPlant() {
         ArrayList<Point> treesToPlant = new ArrayList<>();
         for(Point emptyTree : this.map.getEmptyTrees()) {
             if(Math.random() < .05) {
@@ -20,7 +20,7 @@ public class GameDriver {
         return treesToPlant;
     }
 
-    private ArrayList<Point> getTreesToIgnite() {
+    public ArrayList<Point> getTreesToIgnite() {
         ArrayList<Point> treesToIgnite = new ArrayList<>();
         for(Point livingTree : this.map.getLivingTrees()) {
             if(Math.random() < 0.01) {
@@ -30,18 +30,21 @@ public class GameDriver {
         return treesToIgnite;
     }
 
-    private void burnTrees() {
-        if(this.map.hasBurningTrees())
+    public boolean burnTrees() {
+        if(this.map.hasBurningTrees()) {
             this.map.burn();
+            return true;
+        }
+        return false;
     }
 
-    private void plantTrees(ArrayList<Point> treesToPlant) {
+    public void plantTrees(ArrayList<Point> treesToPlant) {
         for(Point tree : treesToPlant) {
             this.map.plantTree(tree);
         }
     }
 
-    private void igniteTrees(ArrayList<Point> treesToIgnite) {
+    public void igniteTrees(ArrayList<Point> treesToIgnite) {
         for(Point tree : treesToIgnite) {
             this.map.igniteTree(tree);
         }
@@ -55,15 +58,15 @@ public class GameDriver {
         igniteTrees(treesToIgnite);
     }
 
-    public static void main(String[] args) {
-        GameDriver gameDriver = new GameDriver(10, 10);
-        Scanner scan = new Scanner(System.in);
-        while(true) {
-            System.out.println(gameDriver.map.getEmptyTrees());
-            System.out.println(gameDriver.map.getLivingTrees());
-            System.out.println(gameDriver.map.getBurningTrees());
-            scan.nextLine();
-            gameDriver.step();
-        }
-    }
+//    public static void main(String[] args) {
+//        GameDriver gameDriver = new GameDriver(10, 10);
+//        Scanner scan = new Scanner(System.in);
+//        while(true) {
+//            System.out.println(gameDriver.map.getEmptyTrees());
+//            System.out.println(gameDriver.map.getLivingTrees());
+//            System.out.println(gameDriver.map.getBurningTrees());
+//            scan.nextLine();
+//            gameDriver.step();
+//        }
+//    }
 }
