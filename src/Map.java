@@ -94,7 +94,8 @@ public class Map {
 //            System.out.println("                B: Burning Trees: " + this.burningTrees);
             for(Point newBurningTree : allLivingNeighbors) {
                 setTreeState(newBurningTree, State.BURNING);
-                this.burningTrees.add(newBurningTree);
+                if(!this.burningTrees.contains(newBurningTree))
+                    this.burningTrees.add(newBurningTree);
                 this.livingTrees.remove(newBurningTree);
             }
 //            System.out.println("                C: Empty   Trees: " + this.emptyTrees);

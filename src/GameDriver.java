@@ -13,7 +13,7 @@ public class GameDriver {
     public ArrayList<Point> getTreesToPlant() {
         ArrayList<Point> treesToPlant = new ArrayList<>();
         for(Point emptyTree : this.map.getEmptyTrees()) {
-            if(Math.random() < .05) {
+            if(Math.random() < .01) {
                 treesToPlant.add(emptyTree);
             }
         }
@@ -23,7 +23,7 @@ public class GameDriver {
     public ArrayList<Point> getTreesToIgnite() {
         ArrayList<Point> treesToIgnite = new ArrayList<>();
         for(Point livingTree : this.map.getLivingTrees()) {
-            if(Math.random() < 0.01) {
+            if(Math.random() < 0.0001) {
                 treesToIgnite.add(livingTree);
             }
         }
