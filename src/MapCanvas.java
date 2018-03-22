@@ -82,7 +82,7 @@ public class MapCanvas extends JPanel {
         }
 
         // Draw burning trees
-        g.setColor(Color.RED);
+        g.setColor(new Color(231, 86, 49));
         for(Point burningTree : this.burningTrees) {
             g.fillRect((int)burningTree.getX(), (int)burningTree.getY(), this.cellLength, this.cellLength);
         }
