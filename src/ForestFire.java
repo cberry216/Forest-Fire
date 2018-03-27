@@ -1,3 +1,6 @@
+/**
+ * The main class that runs the game of Forest Fire.
+ */
 public class ForestFire {
 
     public static void main(String[] args) {

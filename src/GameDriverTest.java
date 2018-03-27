@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameDriverTest {
 
-    GameDriver gameDriver = new GameDriver(10,10);
+    private GameDriver gameDriver = new GameDriver(10,10);
 
     @BeforeEach
     void before() {
@@ -21,7 +21,7 @@ class GameDriverTest {
 
             ArrayList<Point> treesToPlant = gameDriver.getTreesToPlant();
 
-            assertTrue((treesToPlant.size() >= 0) && (treesToPlant.size() <= 100));
+            assertTrue(treesToPlant.size() <= 100);
             for (Point tree : treesToPlant) {
                 assertTrue(tree.x >= 0 && tree.x < 10);
                 assertTrue(tree.y >= 0 && tree.y < 10);
@@ -36,7 +36,7 @@ class GameDriverTest {
 
             ArrayList<Point> treesToIgnite = gameDriver.getTreesToIgnite();
 
-            assertTrue((treesToIgnite.size() >= 0) && (treesToIgnite.size() <= 100));
+            assertTrue(treesToIgnite.size() <= 100);
             for (Point tree : treesToIgnite) {
                 assertTrue(tree.x >= 0 && tree.x < 10);
                 assertTrue(tree.y >= 0 && tree.y < 10);
@@ -139,10 +139,5 @@ class GameDriverTest {
             assertTrue(treesToIgnite.contains(tree));
         }
         assertEquals(gameDriver.map.getBurningTrees().size(), treesToIgnite.size());
-    }
-
-    @Test
-    void testStep() {
-        ArrayList<Point> predeterminedLivingTrees = new ArrayList<>();
     }
 }

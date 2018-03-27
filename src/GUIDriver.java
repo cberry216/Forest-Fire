@@ -2,9 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This class acts as the frame that the user actually sees. It controls
+ * the repainting of the {@link MapCanvas}, running the simulation, and
+ * adding all the listeners.
+ */
 public class GUIDriver extends JFrame {
 
-    Dimension screenSize;
+    private Dimension screenSize;
 
     private MapCanvas mapCanvas;
     private JButton start;
@@ -25,6 +30,9 @@ public class GUIDriver extends JFrame {
     private boolean play;
     private boolean started;
 
+    /**
+     * Constructor for the {@link GameDriver} object.
+     */
     GUIDriver() {
         this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setPreferredSize(this.screenSize);
@@ -59,7 +67,10 @@ public class GUIDriver extends JFrame {
         initJFrame();
     }
 
-    public void addListeners() {
+    /**
+     * Adds the listeners to each corresponding GUI object.
+     */
+    private void addListeners() {
         this.start.addActionListener(new MapButtonListener(this, (byte)0));
         this.stop.addActionListener(new MapButtonListener(this, (byte)1));
         this.reset.addActionListener(new MapButtonListener(this, (byte)2));
@@ -72,7 +83,10 @@ public class GUIDriver extends JFrame {
         this.randomGame.addActionListener(new MenuButtonListener(this, (byte)1));
     }
 
-    public void initJFrame() {
+    /**
+     * Sets up the {@link GUIDriver} in organized fashion.
+     */
+    private void initJFrame() {
         setLayout(new GridBagLayout());
         setPreferredSize(this.screenSize);
 
@@ -168,6 +182,9 @@ public class GUIDriver extends JFrame {
         add(this.mapCanvas, gbc);
     }
 
+    /**
+     * Takes one step through the simulation.
+     */
     private void stepSimulation() {
         this.mapCanvas.gameDriver.step();
         ArrayList<Point> stepLivingTrees = this.mapCanvas.gameDriver.map.getLivingTrees();
@@ -189,6 +206,9 @@ public class GUIDriver extends JFrame {
         }
     }
 
+    /**
+     * Sets the {@link MapCanvas} up and runs the simulation.
+     */
     public void startSimulation() {
         this.mapCanvas.setupMap();
         this.play = true;
@@ -198,12 +218,18 @@ public class GUIDriver extends JFrame {
         }
     }
 
+    /**
+     * If the game has already started, just run the simulation.
+     */
     public void continueSimulation() {
         while(this.play) {
             stepSimulation();
         }
     }
 
+    /**
+     * Resets the {@link MapCanvas} and {@link GUIDriver}.
+     */
     public void resetGUI() {
         this.mapCanvas.resetMapCanvas();
         this.started = false;
@@ -213,35 +239,69 @@ public class GUIDriver extends JFrame {
     }
 
     // Getters
+
+    /**
+     * Gets the {@link MapCanvas} used in {@link GUIDriver}.
+     * @return the {@link MapCanvas} used.
+     */
     public MapCanvas getMapCanvas() {
         return this.mapCanvas;
     }
 
+    /**
+     * Returns whether the game is currently playing.
+     * @return  the play member.
+     */
     public boolean getPlay() {
         return this.play;
     }
 
+    /**
+     * Returns whether the game has already started.
+     * @return  the started member
+     */
     public boolean getStarted() {
         return this.started;
     }
 
+    /**
+     * Gets the speed value of the speed {@link JSlider}.
+     * @return  the value of speed.
+     */
     public int getSpeed() {
         return this.speed.getValue();
     }
 
+    /**
+     * Gets the cell size value of the cell size {@link JSpinner}.
+     * @return  the value of cell size.
+     */
     public int getCellLength() {
         return (int)this.cellSize.getValue();
     }
 
+    /**
+     * Gets the {@link GameDriver} used in the {@link MapCanvas}.
+     * @return  the {@link GameDriver} in the {@link MapCanvas}.
+     */
     public GameDriver getGameDriver() {
         return this.mapCanvas.gameDriver;
     }
 
     // Setters
+
+    /**
+     * Sets the value of play.
+     * @param play  true if running, false otherwise.
+     */
     public void setPlay(boolean play) {
         this.play = play;
     }
 
+    /**
+     * Set the speed of the simulation.
+     * @param speed  the speed of the simulation.
+     */
     public void setSpeed(int speed) {
         if(speed == 0) {
             this.play = false;
@@ -251,6 +311,11 @@ public class GUIDriver extends JFrame {
         }
     }
 
+    /**
+     * Sets the {@link GameDriver} of the {@link MapCanvas} to a different
+     * {@link GameDriver}.
+     * @param gameDriver  the {@link GameDriver} to change to.
+     */
     public void setGameDriver(GameDriver gameDriver) {
         this.mapCanvas.gameDriver = gameDriver;
     }

@@ -2,14 +2,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This class acts as the canvas which the grid and trees is drawn on. Is
+ * in charge of setting up map, resetting map, generating random map, and
+ * painting the map upon a change.
+ */
 public class MapCanvas extends JPanel {
 
     private int width, height, numCols, numRows;
     int cellLength;
-    GUIDriver guiDriver;
+    private GUIDriver guiDriver;
     ArrayList<Point> livingTrees, burningTrees;
     GameDriver gameDriver;
 
+    /**
+     * Constructor for the {@link MapCanvas} object.
+     * @param width       the width of the {@link MapCanvas} in pixels.
+     * @param height      the height of the {@link MapCanvas} in pixels.
+     * @param cellLength  the length of each cell in pixels.
+     * @param guiDriver   the {@link GUIDriver} the {@link MapCanvas} is in.
+     */
     MapCanvas(int width, int height, int cellLength, GUIDriver guiDriver) {
         this.width = width;
         this.height = height;
@@ -28,6 +40,10 @@ public class MapCanvas extends JPanel {
         addMouseListener(new MapMouseListener(this));
     }
 
+    /**
+     * Converts all living cells on the {@link MapCanvas} to living trees in
+     * the {@link Map}.
+     */
     public void setupMap() {
         this.guiDriver.setGameDriver(new GameDriver(this.numCols, this.numRows));
         for(Point livingTree : this.livingTrees) {
@@ -35,12 +51,18 @@ public class MapCanvas extends JPanel {
         }
     }
 
+    /**
+     * Resets the {@link MapCanvas} and {@link GameDriver}.
+     */
     public void resetMapCanvas() {
         this.livingTrees.clear();
         this.burningTrees.clear();
         this.gameDriver = new GameDriver(this.numCols, this.numRows);
     }
 
+    /**
+     * Randomly generates series of living trees.
+     */
     public void generateRandomMap() {
         this.livingTrees.clear();
         for(int i = this.numCols / 10; i < this.numCols * 9 / 10; i++) {
@@ -55,6 +77,10 @@ public class MapCanvas extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Paints the grid, living trees and burning trees.
+     * @param g  Not used explicitly in implementation.
+     */
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.WHITE);
@@ -89,15 +115,27 @@ public class MapCanvas extends JPanel {
     }
 
     // Setters
+
+    /**
+     * Sets the cell length of game to the given length.
+     * @param cellLength  the length to set cellLength to in pixels.
+     */
     public void setCellLength(int cellLength) {
         this.cellLength = cellLength;
     }
 
     // Resetters
+
+    /**
+     * Reset the number of columns on a cell length change.
+     */
     public void resetNumCols() {
         this.numCols = this.width / this.cellLength;
     }
 
+    /**
+     * Reset the number of rows on a cell length change.
+     */
     public void resetNumRows() {
         this.numRows = this.height / this.cellLength;
     }
