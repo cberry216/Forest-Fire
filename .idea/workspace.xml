@@ -6,21 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25605176-546d-475b-b9b4-8576654e3427" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/CellSizeChangeListener.java" afterPath="$PROJECT_DIR$/src/CellSizeChangeListener.java" />
-      <change beforePath="$PROJECT_DIR$/src/ForestFire.java" afterPath="$PROJECT_DIR$/src/ForestFire.java" />
-      <change beforePath="$PROJECT_DIR$/src/GUIDriver.java" afterPath="$PROJECT_DIR$/src/GUIDriver.java" />
-      <change beforePath="$PROJECT_DIR$/src/GameDriver.java" afterPath="$PROJECT_DIR$/src/GameDriver.java" />
-      <change beforePath="$PROJECT_DIR$/src/GameDriverTest.java" afterPath="$PROJECT_DIR$/src/GameDriverTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/Map.java" afterPath="$PROJECT_DIR$/src/Map.java" />
-      <change beforePath="$PROJECT_DIR$/src/MapButtonListener.java" afterPath="$PROJECT_DIR$/src/MapButtonListener.java" />
-      <change beforePath="$PROJECT_DIR$/src/MapCanvas.java" afterPath="$PROJECT_DIR$/src/MapCanvas.java" />
-      <change beforePath="$PROJECT_DIR$/src/MapMouseListener.java" afterPath="$PROJECT_DIR$/src/MapMouseListener.java" />
-      <change beforePath="$PROJECT_DIR$/src/MenuButtonListener.java" afterPath="$PROJECT_DIR$/src/MenuButtonListener.java" />
-      <change beforePath="$PROJECT_DIR$/src/SpeedChangeListener.java" afterPath="$PROJECT_DIR$/src/SpeedChangeListener.java" />
-      <change beforePath="$PROJECT_DIR$/src/State.java" afterPath="$PROJECT_DIR$/src/State.java" />
-    </list>
+    <list default="true" id="25605176-546d-475b-b9b4-8576654e3427" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
